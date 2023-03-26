@@ -165,7 +165,6 @@ const person {
 
 me.greet();
 {% endhighlight %}
-솔직히 공부할수록 무슨말인지 모르겠어요
 
 ## http, 백엔드
 
