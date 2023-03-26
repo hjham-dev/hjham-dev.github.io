@@ -58,8 +58,8 @@ a == 3; // true
     if (a > 3) {
     	console.log('a는 3보다 큽니다');
     }
-    else if (a < 3){ // else와 if를 연달아 적어 여러 조건을 확인할 수도 있다
-    	console.log('a는 3보다 작습니다'');
+    else if (a < 3)  { // else와 if를 연달아 적어 여러 조건을 확인할 수도 있다
+    	console.log('a는 3보다 작습니다');
     }
     else {
     	console.log('a는 3입니다');
