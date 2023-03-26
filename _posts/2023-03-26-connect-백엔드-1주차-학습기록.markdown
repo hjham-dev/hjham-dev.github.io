@@ -1,0 +1,184 @@
+---
+layout: post
+title:  "connect 백엔드 1주차 학습기록"
+date:   2023-03-26 20:22:00 +0900
+categories: connect_backend
+---
+## Javascript
+
+Javascript는 웹브라우저의 동작을 제어하기 위해 만들어졌다. 이후 동적 웹 페이지의 제작에 사용되는 등 쓰임새가 넓어지다가, nodejs의 등장으로 서버의 제작에도 사용할 수 있을 만큼 광범위한 분야에서 사용되는 언어이다.
+
+## Javascript 기본 문법
+
+#### 변수
+
+변수는 자바스크립트에서 데이터를 저장할 수 있는 공간이다. 변수를 사용하기 위해서는 `var`, `let`, `const`의 키워드를 사용해 아래와 같이 선언할 수 있다.
+
+{% highlight javascript %}
+var age;
+let name = "철수";
+const pi = 3.14;
+{% endhighlight %}
+
+각각의 차이점은
+
+`var`는 변수가 선언된 함수 안이라면 어디에서든 사용이 가능하다.
+
+`let`은 변수가 선언된 블럭 안에서만 사용이 가능하다.
+
+`const`는 let과 비슷하나 값의 변경이 불가능하다.
+
+변수의 이름은 아래의 규칙을 따라야 한다.
+1. 알파벳 대소문자, 0~9까지의 숫자, _, $ 이외의 문자는 사용할 수 없다.
+2. 숫자로는 시작할 수 없다.
+3. 키워드를 변수의 이름으로 사용할 수 없다.
+
+#### 변수의 활용
+
+변수에 저장된 값은 연산을 통해 그 값을 바꾸거나 비교하는 등의 활용이 가능하다. 자바스크립트에서 할 수 있는 대표적인 연산을 소개하자면
+
+1. 사칙연산: +, -, *, / 연산자를 이용해 간단한 사칙연산이 가능하다. 추가로, % 연산자를 이용하면 나머지를 구할 수 있다.
+2. 증가/감소 연산: ++, -- 연산자를 이용해 값을 1만큼 증가시키거나 감소시킬 수 있다.
+3. 비교 연산: <, >, <=, >=, ==, != 연산자를 통해 값의 대소 비교 및 일치 여부를 확인할 수 있다. 연산의 결과는 true, false 중 하나이다. <=는 ≤, >=는 ≥와 같으며, ==는 비교할 두 값이 같으면 true, !=는 다르면 true이다. =가 아니라 ==임을 조심하자.
+4. 논리 연산: &&, \|\|, ! 연산자를 통해 논리 연산을 수행할 수 있다. &&는 양쪽의 값이 모두 true이면 true, \|\|는 한 쪽이 true이면 true, !는 값이 true이면 false, false이면 true이다.
+
+{% highlight javascript %}
+var a = 8 % 3; // a = 2
+a++; // a = 3
+a < 5; // false
+a == 3; // true
+(a < 5) || (a > 10); // true || false이므로 true
+!(a > 10); // !false이므로 true
+{% endhighlight %}
+
+#### 조건문
+
+조건문은 주어진 조건을 체크해 원하는 코드를 실행시키는 역할을 한다. 조건문에는 `if ~ else`, `switch ~ case`가 있다.
+* `if ~ else`
+
+    if문은 주어진 조건이 만족하는 지 테스트해 해당 코드의 실행을 결정한다. else문을 이용해 조건을 만족하지 않는 경우에 실행할 코드를 제공할 수도 있다.
+
+    {% highlight javascript %}
+    let a = 5;
+    if (a > 3) {
+    	console.log('a는 3보다 큽니다');
+    }
+    else if (a < 3){ // else와 if를 연달아 적어 여러 조건을 확인할 수도 있다
+    	console.log('a는 3보다 작습니다'');
+    }
+    else {
+    	console.log('a는 3입니다');
+    }
+    {% endhighlight %}
+
+* `switch ~ case`
+
+    switch문은 변수가 가진 값을 따져보는 역할을 한다. 변수가 갖는 값에 따라 실행할 코드를 결정할 수 있다.
+    
+    {% highlight javascript %}
+    let a = 5;
+    switch (a) {
+    	case 1:
+    		console.log('a는 1입니다');
+    		break; // 안쓰면 해당 switch ~ case 문에서 break가 나올 때까지, 없으면 끝까지 모든 코드가 작동합니다
+    	case 3:
+    		console.log('a는 3입니다');
+    		break;
+    	case 5:
+    		console.log('a는 5입니다');
+    		break;
+    	default:
+    		console.log('a는 1, 3, 5 중에 없습니다');
+    }
+    {% endhighlight %}
+
+#### 반복문
+
+반복문은 주어진 조건을 만족하는 동안 코드를 반복적으로 실행하는 역할을 한다. 반복문의 종류에는 `for`, `while`, `do ... while`이 있다.
+
+* `for`
+
+    for문은 총 세 부분으로 나뉘며, 각각 변수의 초기화, 조건, 값의 변경을 담당한다.
+    
+    {% highlight javascript %}
+    let sum = 0;
+    for (let i = 1; i <= 10; i++) {
+    	sum += i;
+    }
+    console.log(sum); // output: 55
+    {% endhighlight %}
+
+ * `while`
+
+    while문은 주어진 조건을 만족하는 동안 코드를 반복해서 실행시킨다.
+
+    {% highlight javascript %}
+    while (true) { // 무한루프
+    	console.log('이 코드는 끝나지 않습니다');
+    }
+    {% endhighlight %}
+
+* `do ... while`
+
+    while문과 같지만 최초 1번은 조건을 체크하지 않는다. 즉, 무조건 한 번은 코드가 실행된다. 아래의 코드는 i가 0이므로 조건을 만족하지 않으나 최초 1회는 조건에 관계없이 실행됨을 볼 수 있다.
+
+    {% highlight javascript %}
+    let i = 0;
+    do {
+    	console.log(i--);
+    } while (i > 0);
+    {% endhighlight %}
+
+#### 함수
+
+함수는 어떤 기능을 수행하기 위한 코드들을 모아놓은 것이다. 함수를 사용하면 코드의 가독성이 좋아지고 유지보수가 쉬워진다는 장점이 있다. 함수를 사용하기 위해서는 우선 함수를 선언해야 한다. 아래의 예시를 통해 함수의 선언을 살펴보면
+
+{% highlight javascript %}
+function add(a, b) {
+	return a + b;
+}
+{% endhighlight %}
+
+function은 함수를 선언하기 위해 사용하는 키워드이다. add는 함수의 이름이고, 이를 통해 함수를 호출, 즉 사용할 수 있다. a와 b는 매개변수로, 함수의 동작에 필요한 값을 받는 변수이다. 이 함수에서는 두 수를 더하는 것이 목적이므로, 더할 두 개의 숫자를 a, b에 받는다. 이후 블럭 안에 이 함수가 실행할 코드를 작성하면 된다.
+
+함수를 호출하면 해당 함수가 실행되며, 함수의 호출은 아래와 같은 형태로 이루어진다.
+
+{% highlight javascript %}
+console.log(add(3, 4));
+console.log(add(2, add(4, 1)));
+{% endhighlight %}
+
+함수의 이름을 적고, 필요한 경우 괄호 안에 넘겨줄 데이터를 적는다.
+
+#### 객체
+
+자바스크립트에서의 객체는 key-value(또는 properties) 쌍을 저장하는 역할을 한다. 자바스크립트에서 사용 가능한 모든 값이 속성이 될 수 있으며, 함수 역시 마찬가지이다. 이런 종류의 함수를 메서드라고 부른다.
+
+{% highlight javascript %}
+const person {
+	name: '철수',
+	age: 21,
+	greet: function() {
+		console.log('반가워요. 저는 ${this.name}입니다'); // output: 반가워요. 저는 철수입니다
+	}
+};
+
+me.greet();
+{% endhighlight %}
+솔직히 공부할수록 무슨말인지 모르겠어요
+
+## http, 백엔드
+
+#### http
+
+`http`는 `HyperText Transfer Protocol`의 약자로, 웹 브라우저와 서버의 통신을 위한 프로토콜이다. 간단한 작동 방식은 다음과 같다.
+
+1. 사용자가 웹 브라우저에 url을 입력한다.
+2. 브라우저가 http 요청을 생성한다. 대표적인 요청은 GET, POST, PUT, DELETE 등이 있다.
+3. 요청이 서버에 전달된다.
+4. 서버가 해당 요청을 수행한다.
+5. 클라이언트에 응답을 돌려준다. 이때 응답 코드를 함께 전달하는데, 200 OK는 성공, 302 Found는 리다이렉션 등 일시적 이동, 404는 찾을 수 없음을 의미한다.
+
+#### Server, Client
+
+서버는 일반적으로 서비스나 자원을 제공하는 쪽의 컴퓨터를 의미하며, 클라이언트는 이를 받아서 처리하는 역할을 한다.
